@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Диана & Артём · 08.08.2026</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      background: linear-gradient(135deg, #f6fbf7, #eef6f0);
+      color: #3e5c48;
+      line-height: 1.9;
+      overflow-x: hidden;
+    }
+
+    /* ===== HEADER ===== */
+
+    header.cover {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .photo-layer {
+      position: absolute;
+      inset: 0;
+      background: url('IMG_3871.JPG') center top / contain no-repeat;
+      opacity: 0;
+      transform: scale(1.08);
+      animation: photoReveal 6s ease-out forwards;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        rgba(248,253,248,0.92),
+        rgba(248,253,248,0.85)
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      padding: 0 30px;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 8.8rem;
+      color: #4a6c56;
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      transform: translateY(120px);
+      animation: fadeUp 3.5s cubic-bezier(0.23,1,0.32,1) forwards 1.5s;
+    }
+
+    .main-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.1rem;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(80px);
+      animation: fadeUp 3s ease forwards 2.8s;
+    }
+
+    .invitation {
+      font-size: 1.6rem;
+      max-width: 760px;
+      margin: 0 auto 2.8rem;
+      opacity: 0;
+      transform: translateY(60px);
+      animation: fadeUp 3s ease forwards 3.8s;
+    }
+
+    .main-date {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      letter-spacing: 4px;
+      margin-bottom: 2.4rem;
+      opacity: 0;
+      animation: fadeUp 2.5s ease forwards 4.8s;
+    }
+
+    /* ===== FIXED TIMER WITH ANIMATION ===== */
+
+    .fixed-timer {
+      position: fixed;
+      bottom: 26px;
+      left: 50%;
+      transform: translateX(-50%) scale(0.6);
+      opacity: 0;
+      z-index: 999;
+      animation: timerAppear 2.2s cubic-bezier(0.23,1,0.32,1) forwards 6.5s;
+    }
+
+    #countdown {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      padding: 1.2rem 3.2rem;
+      border-radius: 40px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(74,108,86,0.25);
+      box-shadow: 0 10px 30px rgba(74,108,86,0.18);
+    }
+
+    /* ===== SECTIONS ===== */
+
+    section {
+      padding: 120px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(80px);
+      transition: all 1.8s cubic-bezier(0.23,1,0.32,1);
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      margin-bottom: 3.5rem;
+      color: #4a6c56;
+    }
+
+    /* ===== PROGRAM ===== */
+
+    .program {
+      max-width: 760px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .program::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(74,108,86,0.35),
+        transparent
+      );
+    }
+
+    .program-item {
+      background: rgba(255,255,255,0.96);
+      margin-bottom: 3.2rem;
+      padding: 2.6rem 3.2rem;
+      border-radius: 28px;
+      box-shadow: 0 12px 35px rgba(74,108,86,0.1);
+      border: 1px solid rgba(74,108,86,0.12);
+      display: flex;
+      align-items: center;
+      gap: 2.6rem;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 1.4s ease;
+      position: relative;
+    }
+
+    .program-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .program-item::before {
+      content: attr(data-icon);
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: #eef5ef;
+      border: 1px solid rgba(74,108,86,0.25);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+
+    .time {
+      font-size: 2.4rem;
+      font-weight: 600;
+      min-width: 110px;
+      color: #4a6c56;
+    }
+
+    .event-desc {
+      font-size: 1.7rem;
+    }
+
+    /* ===== DRESS CODE ===== */
+
+    .dresscode-text {
+      font-size: 1.7rem;
+      max-width: 860px;
+      margin: 0 auto 4rem;
+    }
+
+    .colors {
+      display: flex;
+      justify-content: center;
+      gap: 2.4rem;
+      flex-wrap: wrap;
+    }
+
+    .circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.12);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    }
+
+    .sage  { background:#cfded2; }
+    .olive { background:#d8e0cf; }
+    .mint  { background:#dfeee7; }
+    .beige { background:#e7dcc8; }
+    .cream { background:#f2eadf; }
+    .sand  { background:#d8cbb9; }
+    .taupe { background:#c3ad98; }
+    .latte { background:#bfae9c; }
+
+    .address {
+      font-size: 1.7rem;
+      line-height: 2.4rem;
+    }
+
+    /* ===== ANIMATIONS ===== */
+
+    @keyframes fadeUp {
+      from { opacity:0; transform: translateY(120px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+
+    @keyframes photoReveal {
+      from { opacity:0; transform: scale(1.15) translateY(-30px); }
+      to   { opacity:1; transform: scale(1.05) translateY(0); }
+    }
+
+    @keyframes timerAppear {
+      0%   { opacity:0; transform: translateX(-50%) scale(0.5); }
+      70%  { opacity:1; transform: translateX(-50%) scale(1.1); }
+      100% { opacity:1; transform: translateX(-50%) scale(1); }
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 6.2rem; }
+      .main-text { font-size: 1.9rem; }
+      .invitation { font-size: 1.4rem; }
+      .program-item { flex-direction: column; text-align: center; }
+      .time { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="photo-layer"></div>
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h1>Диана & Артём</h1>
+    <div class="main-text">Мы будем счастливы разделить с Вами день рождения нашей семьи</div>
+    <div class="invitation">Приглашаем Вас стать частью нашего праздника</div>
+    <div class="main-date">08 · 08 · 2026</div>
+  </div>
+</header>
+
+<section id="program">
+  <h2>Программа вечера</h2>
+  <div class="program">
+    <div class="program-item" data-icon="🤍">
+      <div class="time">14:30</div>
+      <div class="event-desc">Сбор гостей</div>
+    </div>
+    <div class="program-item" data-icon="🥂">
+      <div class="time">16:00</div>
+      <div class="event-desc">Начало банкета</div>
+    </div>
+    <div class="program-item" data-icon="🎂">
+      <div class="time">20:00</div>
+      <div class="event-desc">Вынос торта</div>
+    </div>
+    <div class="program-item" data-icon="🎶">
+      <div class="time">21:00</div>
+      <div class="event-desc">Дискотека</div>
+    </div>
+  </div>
+</section>
+
+<section id="dresscode">
+  <h2>Дресс-код</h2>
+  <div class="dresscode-text">
+    Мы очень старались сделать праздник красивым и будем рады, если в своих нарядах Вы поддержите цветовую гамму нашей свадьбы.
+  </div>
+  <div class="colors">
+    <div class="circle sage"></div>
+    <div class="circle olive"></div>
+    <div class="circle mint"></div>
+    <div class="circle beige"></div>
+    <div class="circle cream"></div>
+    <div class="circle sand"></div>
+    <div class="circle taupe"></div>
+    <div class="circle latte"></div>
+  </div>
+</section>
+
+<section id="place">
+  <h2>Место торжества</h2>
+  <p class="address">
+    г. Петрозаводск<br>
+    ул. Фёдоровой, 45<br>
+    отель «Прионежский»
+  </p>
+</section>
+
+<div class="fixed-timer">
+  <div id="countdown"></div>
+</div>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.25 });
+
+  document.querySelectorAll('section, .program-item')
+    .forEach(el => observer.observe(el));
+
+  const wedding = new Date('2026-08-08T00:00:00').getTime();
+  const countdown = document.getElementById('countdown');
+
+  function updateTimer() {
+    const diff = wedding - Date.now();
+    if (diff <= 0) {
+      countdown.textContent = '08 · 08 · 2026';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor(diff / 3600000) % 24;
+    const m = Math.floor(diff / 60000) % 60;
+    const s = Math.floor(diff / 1000) % 60;
+
+    countdown.textContent =
+      `${d} дн : ${String(h).padStart(2,'0')} : ${String(m).padStart(2,'0')} : ${String(s).padStart(2,'0')}`;
+  }
+
+  updateTimer();
+  setInterval(updateTimer, 1000);
+</script>
+
+</body>
+</html>
