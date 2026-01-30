@@ -10,11 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
 
     body {
       font-family: 'Cormorant Garamond', serif;
@@ -38,7 +34,6 @@
       position: absolute;
       inset: 0;
       background: url('IMG_3871.JPG') center 15% / auto 110% no-repeat;
-      /* ↑ главное изменение: auto по ширине + 110% по высоте + сдвиг вверх на 15% */
       opacity: 0;
       transform: scale(1.05);
       animation: photoReveal 7s ease-out forwards;
@@ -49,7 +44,6 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(rgba(248,253,248,0.78), rgba(248,253,248,0.68));
-      /* чуть прозрачнее, чем раньше */
     }
 
     .hero-content {
@@ -57,16 +51,20 @@
       z-index: 2;
       max-width: 90%;
       padding: 0 18px;
+      white-space: pre-line;
     }
 
     h1 {
       font-family: 'Great Vibes', cursive;
       font-size: clamp(4.8rem, 14vw, 9rem);
-      color: #4a6c56;
+      color: #3d5c3d;
       margin-bottom: 0.9rem;
       opacity: 0;
       transform: translateY(100px);
       animation: fadeUp 3.2s cubic-bezier(0.23,1,0.32,1) forwards 1.2s;
+      line-height: 0.95;
+      letter-spacing: -1px;
+      white-space: nowrap;
     }
 
     .main-text {
@@ -112,8 +110,8 @@
       padding: 0.9rem 1.8rem;
       border-radius: 36px;
       background: rgba(255,255,255,0.92);
-      border: 1px solid rgba(74,108,86,0.3);
-      box-shadow: 0 8px 24px rgba(74,108,86,0.2);
+      border: 1px solid rgba(61,92,61,0.3);
+      box-shadow: 0 8px 24px rgba(61,92,61,0.2);
       white-space: nowrap;
     }
 
@@ -127,16 +125,13 @@
       transition: all 1.6s cubic-bezier(0.23,1,0.32,1);
     }
 
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    section.visible { opacity:1; transform:translateY(0); }
 
     h2 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.4rem, 7vw, 3.4rem);
       margin-bottom: clamp(2rem, 5vw, 3.2rem);
-      color: #4a6c56;
+      color: #3d5c3d;
     }
 
     .program {
@@ -150,7 +145,7 @@
       position: absolute;
       top: 0; bottom: 0; left: 50%;
       width: 2px;
-      background: linear-gradient(to bottom, transparent, rgba(74,108,86,0.3), transparent);
+      background: linear-gradient(to bottom, transparent, rgba(61,92,61,0.3), transparent);
       transform: translateX(-50%);
     }
 
@@ -159,8 +154,8 @@
       margin-bottom: 2.4rem;
       padding: 1.8rem;
       border-radius: 24px;
-      box-shadow: 0 10px 30px rgba(74,108,86,0.12);
-      border: 1px solid rgba(74,108,86,0.14);
+      box-shadow: 0 10px 30px rgba(61,92,61,0.12);
+      border: 1px solid rgba(61,92,61,0.14);
       display: flex;
       align-items: center;
       gap: 1.6rem;
@@ -169,17 +164,14 @@
       transition: all 1.3s ease;
     }
 
-    .program-item.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .program-item.visible { opacity:1; transform:translateY(0); }
 
     .program-item::before {
       content: attr(data-icon);
       width: 54px; height: 54px;
       border-radius: 50%;
       background: #eef5ef;
-      border: 1px solid rgba(74,108,86,0.3);
+      border: 1px solid rgba(61,92,61,0.3);
       box-shadow: 0 4px 12px rgba(0,0,0,0.07);
       display: flex;
       align-items: center;
@@ -192,14 +184,11 @@
       font-size: clamp(1.8rem, 5.5vw, 2.3rem);
       font-weight: 600;
       min-width: 90px;
-      color: #4a6c56;
+      color: #3d5c3d;
       text-align: center;
     }
 
-    .event-desc {
-      font-size: clamp(1.35rem, 4.2vw, 1.65rem);
-      text-align: left;
-    }
+    .event-desc { font-size: clamp(1.35rem, 4.2vw, 1.65rem); text-align: left; }
 
     .dresscode-text {
       font-size: clamp(1.3rem, 4vw, 1.65rem);
@@ -225,12 +214,11 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     }
 
-    /* обновлённая палитра (без серого, с коричневым) */
     .forest { background: #3d5c3d; }
     .olive  { background: #8a9a6e; }
     .sage   { background: #a8b5a2; }
     .beige  { background: #e0d4c5; }
-    .taupe  { background: #a67c52; }   /* тёплый коричневый */
+    .taupe  { background: #a67c52; }
 
     .address {
       font-size: clamp(1.3rem, 4vw, 1.65rem);
@@ -316,23 +304,24 @@
       header.cover { min-height: 90vh; }
       .photo-layer {
         background: url('IMG_3871.JPG') center 20% / auto 115% no-repeat;
-        /* на мобильных ещё больше сдвигаем вверх и увеличиваем высоту */
       }
-      .program::before { display: none; }
-      .program-item { flex-direction: column; text-align: center; gap: 1rem; padding: 1.6rem; }
-      .time { min-width: auto; }
-      .program-item::before { margin: 0 auto 0.8rem; }
-      .event-desc { text-align: center; }
-      .fixed-timer { bottom: 12px; transform: translateX(-50%) scale(0.78); }
-      .route-btn, .rsvp-btn { padding: 0.9rem 1.8rem; font-size: 1.25rem; }
-      .colors { gap: 1.4rem; }
-      .circle { width: 52px; height: 52px; }
+      .program::before { display:none; }
+      .program-item { flex-direction:column; text-align:center; gap:1rem; padding:1.6rem; }
+      .time { min-width:auto; }
+      .program-item::before { margin:0 auto 0.8rem; }
+      .event-desc { text-align:center; }
+      .fixed-timer { bottom:12px; transform:translateX(-50%) scale(0.78); }
+      #countdown { padding:0.8rem 1.4rem; font-size: clamp(1.1rem, 3.8vw, 1.45rem); }
+      .route-btn, .rsvp-btn { padding:0.9rem 1.8rem; font-size:1.25rem; }
+      .colors { gap:1.4rem; }
+      .circle { width:52px; height:52px; }
+      h1 { font-size: clamp(4.2rem, 13vw, 7.2rem); line-height:1.0; }
     }
 
     @media (max-width: 480px) {
-      h1 { font-size: clamp(4rem, 13vw, 6.5rem); }
+      h1 { font-size: clamp(4rem, 12.5vw, 6.5rem); line-height:1.05; }
       .main-text { font-size: clamp(1.5rem, 5vw, 1.9rem); }
-      section { padding: 50px 14px; }
+      section { padding:50px 14px; }
     }
   </style>
 </head>
@@ -342,7 +331,7 @@
   <div class="photo-layer"></div>
   <div class="overlay"></div>
   <div class="hero-content">
-    <h1>Диана & Артём</h1>
+    <h1>Диана&nbsp;&shy;&amp;&nbsp;&shy;Артём</h1>
     <div class="main-text">Мы будем счастливы разделить с Вами день рождения нашей семьи</div>
     <div class="invitation">Приглашаем Вас стать частью нашего праздника</div>
     <div class="main-date">08 · 08 · 2026</div>
@@ -389,7 +378,7 @@
   <h2>Место торжества</h2>
   <p class="address">
     г. Петрозаводск<br>
-    ул. Фёдоровой, 46<br>
+    ул. Федосовой, 46<br>
     отель «Прионежский»
   </p>
 
