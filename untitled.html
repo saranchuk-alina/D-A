@@ -51,20 +51,29 @@
       z-index: 2;
       max-width: 90%;
       padding: 0 18px;
-      white-space: pre-line;
     }
 
     h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(4.8rem, 14vw, 9rem);
+      font-size: clamp(5rem, 15vw, 10rem);
       color: #3d5c3d;
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.8rem;
       opacity: 0;
       transform: translateY(100px);
       animation: fadeUp 3.2s cubic-bezier(0.23,1,0.32,1) forwards 1.2s;
-      line-height: 0.95;
+      line-height: 0.92;
       letter-spacing: -1px;
-      white-space: nowrap;
+    }
+
+    .amp {
+      font-size: 1.15em;
+      line-height: 0.8;
+      display: block;
+      margin: 0.05em 0 0.15em;
+    }
+
+    .mobile-br {
+      display: none;
     }
 
     .main-text {
@@ -93,6 +102,40 @@
       opacity: 0;
       animation: fadeUp 2.8s ease forwards 4.4s;
     }
+
+    /* ────────────────────────────────────────────── */
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: clamp(5.5rem, 18vw, 9rem);
+        line-height: 1.05;
+        letter-spacing: -2px;
+      }
+
+      .mobile-br {
+        display: block;
+      }
+
+      .amp {
+        display: block;
+        margin: 0.1em 0 0.25em;
+        font-size: 1.4em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: clamp(5rem, 17vw, 8rem);
+        line-height: 1.08;
+      }
+
+      .amp {
+        font-size: 1.35em;
+        margin: 0.08em 0 0.22em;
+      }
+    }
+
+    /* остальные стили без изменений */
 
     .fixed-timer {
       position: fixed;
@@ -315,11 +358,9 @@
       .route-btn, .rsvp-btn { padding:0.9rem 1.8rem; font-size:1.25rem; }
       .colors { gap:1.4rem; }
       .circle { width:52px; height:52px; }
-      h1 { font-size: clamp(4.2rem, 13vw, 7.2rem); line-height:1.0; }
     }
 
     @media (max-width: 480px) {
-      h1 { font-size: clamp(4rem, 12.5vw, 6.5rem); line-height:1.05; }
       .main-text { font-size: clamp(1.5rem, 5vw, 1.9rem); }
       section { padding:50px 14px; }
     }
@@ -331,7 +372,13 @@
   <div class="photo-layer"></div>
   <div class="overlay"></div>
   <div class="hero-content">
-    <h1><span class="diana">Диана</span>&nbsp;&shy;&amp;&nbsp;&shy;Артём</h1>
+    <h1>
+      Диана
+      <br class="mobile-br">
+      <span class="amp">&</span>
+      <br class="mobile-br">
+      Артём
+    </h1>
     <div class="main-text">Мы будем счастливы разделить с Вами день рождения нашей семьи</div>
     <div class="invitation">Приглашаем Вас стать частью нашего праздника</div>
     <div class="main-date">08 · 08 · 2026</div>
@@ -382,8 +429,8 @@
     отель «Прионежский»
   </p>
 
-  <a href="https://yandex.ru/maps/?rtext=~61.798582%2C34.367583&rtt=auto" 
-     target="_blank" 
+  <a href="https://yandex.ru/maps/?rtext=~61.798582%2C34.367583&rtt=auto"
+     target="_blank"
      class="route-btn">
     Построить маршрут в Яндекс.Картах
   </a>
@@ -393,8 +440,8 @@
     <div class="rsvp-text">
       Будем очень благодарны, если Вы заранее сообщите, придёте ли на праздник и что предпочитаете из напитков — это очень поможет в организации ☺️
     </div>
-    <a href="https://forms.yandex.ru/surveys/ВАША_ССЫЛКА_СЮДА/" 
-       target="_blank" 
+    <a href="https://forms.yandex.ru/surveys/ВАША_ССЫЛКА_СЮДА/"
+       target="_blank"
        class="rsvp-btn">
       Заполнить анкету
     </a>
