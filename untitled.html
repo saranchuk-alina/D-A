@@ -75,6 +75,17 @@
       line-height: 0.7;
       margin: 0.05em 0 0.15em;
     }
+    
+    .greeting {
+       font-family: 'Great Vibes', cursive;
+       font-size: clamp(2.2rem, 7vw, 3.5rem);
+       color: #4a6c56;
+       margin: 1.2rem 0 1.8rem;
+       line-height: 1.2;
+       opacity: 0;
+       transform: translateY(80px);
+       animation: fadeUp 3.5s ease forwards 1.8s;
+      }
 
     .main-text {
       font-family: 'Playfair Display', serif;
@@ -370,7 +381,8 @@
       <span class="amp">&</span>
       <span class="name-part">Артём</span>
     </h1>
-    <div class="main-text">Дорогие гости, родные и близкие! Мы будем счастливы разделить с Вами важный для нас день — день рождения нашей семьи!</div>
+    <div class="greeting">Дорогие гости, родные и близкие!</div>
+    <div class="main-text">Мы будем счастливы разделить с Вами важный для нас день — день рождения нашей семьи!</div>
     <div class="invitation">Приглашаем присоединиться к нашему празднику и украсить его своим присутствием!</div>
     <div class="main-date">08 · 08 · 2026</div>
   </div>
