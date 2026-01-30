@@ -65,15 +65,15 @@
       letter-spacing: -1px;
     }
 
-    .amp {
-      font-size: 1.15em;
-      line-height: 0.8;
+    .name-part {
       display: block;
-      margin: 0.05em 0 0.15em;
     }
 
-    .mobile-br {
-      display: none;
+    .amp {
+      display: block;
+      font-size: 1.4em;
+      line-height: 0.7;
+      margin: 0.05em 0 0.15em;
     }
 
     .main-text {
@@ -109,17 +109,14 @@
       h1 {
         font-size: clamp(5.5rem, 18vw, 9rem);
         line-height: 1.05;
-        letter-spacing: -2px;
+        letter-spacing: -1.5px;
       }
 
-      .mobile-br {
-        display: block;
-      }
-
+      .name-part { display: block; }
       .amp {
         display: block;
-        margin: 0.1em 0 0.25em;
-        font-size: 1.4em;
+        margin: 0.08em 0 0.2em;
+        font-size: 1.45em;
       }
     }
 
@@ -130,12 +127,10 @@
       }
 
       .amp {
-        font-size: 1.35em;
-        margin: 0.08em 0 0.22em;
+        font-size: 1.4em;
+        margin: 0.06em 0 0.18em;
       }
     }
-
-    /* остальные стили без изменений */
 
     .fixed-timer {
       position: fixed;
@@ -329,12 +324,12 @@
 
     @keyframes fadeUp {
       from { opacity:0; transform: translateY(100px); }
-      to   { opacity:1; transform: translateY(0); }
+      to { opacity:1; transform: translateY(0); }
     }
 
     @keyframes photoReveal {
       from { opacity:0; transform: scale(1.08) translateY(-20px); }
-      to   { opacity:1; transform: scale(1.02) translateY(0); }
+      to { opacity:1; transform: scale(1.02) translateY(0); }
     }
 
     @keyframes timerAppear {
@@ -345,9 +340,7 @@
 
     @media (max-width: 768px) {
       header.cover { min-height: 90vh; }
-      .photo-layer {
-        background: url('IMG_3871.JPG') center 20% / auto 115% no-repeat;
-      }
+      .photo-layer { background: url('IMG_3871.JPG') center 20% / auto 115% no-repeat; }
       .program::before { display:none; }
       .program-item { flex-direction:column; text-align:center; gap:1rem; padding:1.6rem; }
       .time { min-width:auto; }
@@ -373,17 +366,17 @@
   <div class="overlay"></div>
   <div class="hero-content">
     <h1>
-      Диана
-      <br class="mobile-br">
+      <span class="name-part">Диана</span>
       <span class="amp">&</span>
-      <br class="mobile-br">
-      Артём
+      <span class="name-part">Артём</span>
     </h1>
     <div class="main-text">Мы будем счастливы разделить с Вами день рождения нашей семьи</div>
     <div class="invitation">Приглашаем Вас стать частью нашего праздника</div>
     <div class="main-date">08 · 08 · 2026</div>
   </div>
 </header>
+
+<!-- остальной контент без изменений -->
 
 <section id="program">
   <h2>Программа вечера</h2>
